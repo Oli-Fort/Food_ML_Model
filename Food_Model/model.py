@@ -4,7 +4,7 @@ import pickle
 import numpy as np
 
 dataset = pd.read_csv("D:\Code files\Pycharm\Food_ML\\nutrition_cleaned.csv")
-X = dataset.iloc[:, 4:7].values
+X = dataset.iloc[:, 3:7].values
 
 from sklearn.cluster import KMeans
 kmeans = KMeans(n_clusters= 5, init= 'k-means++', random_state=0)
@@ -22,11 +22,11 @@ a.to_csv(filename, index=False, header=False)
 
 
 ax = plt.axes(projection= "3d")
-ax.scatter3D(X[y_kmeans == 0, 0], X[y_kmeans == 0, 1], X[y_kmeans == 0, 2], s = 10, c = 'red', label= 'Cluster 1')
-ax.scatter3D(X[y_kmeans == 1, 0], X[y_kmeans == 1, 1], X[y_kmeans == 1, 2], s = 10, c = 'blue', label= 'Cluster 2')
-ax.scatter3D(X[y_kmeans == 2, 0], X[y_kmeans == 2, 1], X[y_kmeans == 2, 2], s = 10, c = 'green', label= 'Cluster 3')
-ax.scatter3D(X[y_kmeans == 3, 0], X[y_kmeans == 3, 1], X[y_kmeans == 3, 2], s = 10, c = 'cyan', label= 'Cluster 4')
-ax.scatter3D(X[y_kmeans == 4, 0], X[y_kmeans == 4, 1], X[y_kmeans == 4, 2], s = 10, c = 'magenta', label= 'Cluster 5')
+ax.scatter3D(X[y_kmeans == 0, 1], X[y_kmeans == 0, 2], X[y_kmeans == 0, 3], s = 10, c = X[y_kmeans == 0, 1], label= 'Cluster 1')
+ax.scatter3D(X[y_kmeans == 1, 1], X[y_kmeans == 1, 2], X[y_kmeans == 1, 3], s = 10, c = X[y_kmeans == 1, 1], label= 'Cluster 2')
+ax.scatter3D(X[y_kmeans == 2, 1], X[y_kmeans == 2, 2], X[y_kmeans == 2, 3], s = 10, c = X[y_kmeans == 2, 1], label= 'Cluster 3')
+ax.scatter3D(X[y_kmeans == 3, 1], X[y_kmeans == 3, 2], X[y_kmeans == 3, 3], s = 10, c = X[y_kmeans == 3, 1], label= 'Cluster 4')
+ax.scatter3D(X[y_kmeans == 4, 1], X[y_kmeans == 4, 2], X[y_kmeans == 4, 3], s = 10, c = X[y_kmeans == 4, 1], label= 'Cluster 5')
 plt.title('Food Products Clusters')
 ax.set_xlabel('Total Fat')
 ax.set_ylabel('Protein')
