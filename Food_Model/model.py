@@ -3,7 +3,7 @@ import pandas as pd
 import pickle
 import numpy as np
 
-dataset = pd.read_csv("D:\Code files\Pycharm\Food_ML\\nutrition_cleaned.csv")
+dataset = pd.read_csv("nutrition_cleaned.csv")
 X = dataset.iloc[:, 4:7].values
 
 from sklearn.cluster import KMeans
