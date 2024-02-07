@@ -1,4 +1,3 @@
-import pandas as pd
 import pickle
 
 filename = '../.venv/model_food.pk1'

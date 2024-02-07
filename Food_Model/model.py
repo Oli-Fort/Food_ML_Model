@@ -1,9 +1,9 @@
-import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
 import pickle
+import numpy as np
 
-dataset = pd.read_csv("D:\Code files\Pycharm\Breat_Cancer_Model\Food_ML\\nutrition_cleaned.csv")
+dataset = pd.read_csv("D:\Code files\Pycharm\Food_ML\\nutrition_cleaned.csv")
 X = dataset.iloc[:, 4:7].values
 
 from sklearn.cluster import KMeans
@@ -13,8 +13,15 @@ y_kmeans = kmeans.fit_predict(X)
 filename = '../.venv/model_food.pk1'
 pickle.dump(kmeans, open(filename, 'wb'))
 
-from mpl_toolkits import mplot3d
-ax = plt.axes(projection ="3d")
+
+y = dataset.iloc[:, 1]
+val = np.stack((y, y_kmeans), axis=1)
+a = pd.DataFrame(val)
+filename = 'foodXclusters.csv'
+a.to_csv(filename, index=False, header=False)
+
+
+ax = plt.axes(projection= "3d")
 ax.scatter3D(X[y_kmeans == 0, 0], X[y_kmeans == 0, 1], X[y_kmeans == 0, 2], s = 10, c = 'red', label= 'Cluster 1')
 ax.scatter3D(X[y_kmeans == 1, 0], X[y_kmeans == 1, 1], X[y_kmeans == 1, 2], s = 10, c = 'blue', label= 'Cluster 2')
 ax.scatter3D(X[y_kmeans == 2, 0], X[y_kmeans == 2, 1], X[y_kmeans == 2, 2], s = 10, c = 'green', label= 'Cluster 3')
