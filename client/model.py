@@ -72,7 +72,7 @@ def plot_clusters(X, y_kmeans):
 
 # Main workflow
 file_dir = os.path.dirname(__file__) # Directory of the current file.
-dataset_path = os.path.join(file_dir, '../nutrition_cleaned.csv') # Path to the dataset.
+dataset_path = os.path.join(file_dir, '../data/nutrition_cleaned.csv') # Path to the dataset.
 model_path = os.path.join(file_dir, 'model_food.pk1') # Path to save the trained model.
 output_file = 'foodXclusters.csv' # Name of the output file for cluster data.
 
